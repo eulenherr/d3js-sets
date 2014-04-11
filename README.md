@@ -82,6 +82,6 @@ Let’s assume we just want to display and update a simple bar chart:
 
 	update(data);
 
-You can try changing the data via the buttons in the [live example](http://ux.clueda.com/d3/barchart/).
+You can try changing the data via the buttons in the example.html.
 
 Using the selection features of D3, it isn’t hard to have one datum correspond to multiple rendered elements, but it’s something that’s missing in the examples so far.
