@@ -1,12 +1,46 @@
-# Manipulating Sets of Elements using D3.js
 
-I recently had a closer look at the [D3.js examples](https://github.com/mbostock/d3/wiki/Gallery). Unfortunately, none of them applies the core D3 functionality (changing elements when data changes with enter(), update() & exit()) to sets of elements. Say I want to visualize something like the [bubble chart](http://bl.ocks.org/4063269), but I want to bind it to data, updating all elements that correspond to one datum (the colored circle and the text) when the datum changes. The current examples only render everything once but does not support updating or exiting elements.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bar Chart Example</title>
+<style>
+	body {
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 11px;
+	}
 
-The bubble chart example is static, it only has to react to entering elements. Updating and exiting elements don’t matter. So updating and exiting is what we have to implement additionally in our example to really manipulate multiple elements for each datum.
+	ul {
+		margin: 0;
+		padding: 0 0 0 20px;
+	}
 
-Let’s assume we just want to display and update a simple bar chart:
+	li {
+		display: inline;
+		list-style: none;
+	}
 
-	var svg = d3.select("div").append("svg")
+	a {
+		font-size: 12px;
+		background: #ccc;
+		border-radius: 12px;
+		padding: 3px 8px;
+		border: 1px solid #eee;
+		cursor: pointer;
+	}
+</style>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div></div>
+<ul>
+	<li><a onclick="update([0.4,0.1,0.5]);">Update with [0.4,0.1,0.5]</a></li>
+	<li><a onclick="update([0.2,0.6,0.3,0.1,0.7]);">Update with [0.2,0.6,0.3,0.1,0.7]</a></li>
+	<li><a onclick="update([0.2,0.4,0.3,0.6]);">Reset</a></li>
+</ul>
+<script type="text/javascript">
+
+var svg = d3.select("div").append("svg")
 	   .attr("width", 800)
 	   .attr("height", 220);
 
@@ -81,7 +115,6 @@ Let’s assume we just want to display and update a simple bar chart:
 	}
 
 	update(data);
-
-You can try changing the data via the buttons in the [live example](http://ux.clueda.com/d3/barchart/).
-
-Using the selection features of D3, it isn’t hard to have one datum correspond to multiple rendered elements, but it’s something that’s missing in the examples so far.
+</script>
+</body>
+</html>
